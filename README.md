@@ -11,3 +11,37 @@
 | node.js | 18.15.0 |
 | npm     | 9.5.0   |
 | yarn    | 1.22.19 |
+
+## For Contributers
+
+### Commit Message
+
+기본적으로 https://gitmoji.dev/ 의 아이콘을 사용하여 다음과 같이 작성합니다.
+
+```md
+:sparkles: Add login pages
+:bug: Fix CORS Error
+```
+
+주로 사용하는 아이콘은 다음과 같습니다.
+
+- :zap: - 성능 개선
+- :fire: - 코드 삭제
+- :bug: - 버그 수정
+- :sparkles: - 새 기능 추가
+- :memo: - 문서 추가 또는 수정
+- :lipstick: - UI 관련 수정
+- :bento: - assets 추가 또는 수정
+- :iphone: - 반응형 디자인 작업
+- :pencil2: - 오타 수정
+
+## Contributers
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/i4song"><img src="https://avatars.githubusercontent.com/u/46441280?v=4" width="100px;" alt="i4song"/><br /><sub><b>i4song</b></sub></a></td>
+      <td align="center"><a href="https://github.com/junglesub"><img src="https://avatars.githubusercontent.com/u/42944002?v=4" width="100px;" alt="junglesub"/><br /><sub><b>junglesub</b></sub></a></td>
+    </tr>
+  </tbody>
+</table>

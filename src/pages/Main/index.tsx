@@ -8,7 +8,7 @@ const Menu = () => {
     useState<kakao.maps.services.PlacesSearchResult>([]);
 
   const [keyword, setKeyword] = useState("");
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   };
 
@@ -50,7 +50,7 @@ const Menu = () => {
             onClick={searchKeyword}
           />
           <input
-            onChange={onChange}
+            onChange={onQueryChange}
             onKeyDown={detectEnter}
             value={keyword}
             spellCheck={false}

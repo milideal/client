@@ -6,6 +6,7 @@ import searchImg from "/src/assets/search-20x20.png";
 const Menu = () => {
   const [searchResults, setSearchResults] =
     useState<kakao.maps.services.PlacesSearchResult>([]);
+  const [isSearchCompleted, setIsSearchCompleted] = useState(false);
 
   const [keyword, setKeyword] = useState("");
   const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,6 +22,7 @@ const Menu = () => {
   const searchKeyword = () => {
     const places = new kakao.maps.services.Places();
     places.keywordSearch(keyword, (result, status) => {
+      setIsSearchCompleted(true);
       if (status == kakao.maps.services.Status.OK) {
         setSearchResults(result.slice(0, 3));
       }
@@ -58,7 +60,7 @@ const Menu = () => {
             placeholder="강남구 삼성동"
           />
         </div>
-        <ResultBox result={searchResults} />
+        {isSearchCompleted && <ResultBox result={searchResults} />}
       </div>
       <div className="vbox w(370) r(5) b(1/#D9D9D9) box-shadow(0/0/20/#000.1) pl(24) pt(14) pb(14)">
         <span className="font(14) 900 c(#363636) dark-white">

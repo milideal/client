@@ -53,10 +53,6 @@
   font-family: "NanumGothic";
 }
 
-.pointer {
-  cursor: pointer;
-}
-
 input {
   outline: none;
   border: none;

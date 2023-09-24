@@ -21,10 +21,14 @@ const Menu = () => {
 
   const searchKeyword = () => {
     const places = new kakao.maps.services.Places();
+    if (keyword === "") return;
     places.keywordSearch(keyword, (result, status) => {
-      setIsSearchCompleted(true);
       if (status == kakao.maps.services.Status.OK) {
         setSearchResults(result);
+        setIsSearchCompleted(true);
+      } else if (status == kakao.maps.services.Status.ZERO_RESULT) {
+        setSearchResults([]);
+        setIsSearchCompleted(true);
       }
     });
   };

@@ -36,6 +36,15 @@
   font-weight: 900;
 }
 
+@media (prefers-color-scheme: dark) {
+  .dark-white {
+    color: #fff;
+  }
+  .dark-transparent {
+    background: none;
+  }
+}
+
 .GmarketSans {
   font-family: "GmarketSans";
 }

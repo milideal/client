@@ -14,6 +14,45 @@
   -webkit-text-size-adjust: 100%;
 }
 
+@font-face {
+  font-family: "GmarketSans";
+  src: url("./fonts/GmarketSans.woff") format("woff");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "NanumGothic";
+  src: url("./fonts/NanumGothic.woff") format("woff");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "NanumGothic";
+  src: url("./fonts/NanumGothicBold.woff") format("woff");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "NanumGothic";
+  src: url("./fonts/NanumGothicExtraBold.woff") format("woff");
+  font-weight: 900;
+}
+
+.GmarketSans {
+  font-family: "GmarketSans";
+}
+
+.NanumGothic {
+  font-family: "NanumGothic";
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

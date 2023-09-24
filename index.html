@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%= kakaoAppKey %>"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%= kakaoAppKey %>&libraries=services"
     ></script>
     <title>Milideal</title>
   </head>
@@ -31,14 +31,7 @@
       if ("serviceWorker" in navigator) {
         // Register a service worker hosted at the root of the
         // site using the default scope.
-        navigator.serviceWorker
-          .register("/serviceworker.js")
-          .then((registration) => {
-            console.log("Service worker registration succeeded:", registration);
-          })
-          .catch((err) => {
-            console.log("Service worker registration failed:", error);
-          });
+        navigator.serviceWorker.register("/serviceworker.js");
       } else {
         console.log("Service workers are not supported.");
       }

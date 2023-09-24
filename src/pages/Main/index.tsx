@@ -23,7 +23,6 @@ const Menu = () => {
     places.keywordSearch(keyword, (result, status) => {
       if (status == kakao.maps.services.Status.OK) {
         setSearchResults(result.slice(0, 3));
-        console.log(result.slice(0, 3));
       }
     });
   };

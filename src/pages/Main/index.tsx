@@ -24,7 +24,7 @@ const Menu = () => {
     places.keywordSearch(keyword, (result, status) => {
       setIsSearchCompleted(true);
       if (status == kakao.maps.services.Status.OK) {
-        setSearchResults(result.slice(0, 3));
+        setSearchResults(result);
       }
     });
   };

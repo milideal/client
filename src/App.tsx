@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import Menu from "./pages/Menu";
+import Main from "./pages/Main";
 import MapView from "./pages/MapView/MapView";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Menu />} />
+      <Route path="/" element={<Main />} />
       <Route path="/map" element={<MapView />} />
     </Routes>
   );

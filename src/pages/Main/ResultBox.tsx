@@ -10,7 +10,7 @@ const ResultBox = (props: {
       </span>
     );
   return (
-    <div className="h(~200) scroll-y mt(20) no-scrollbar">
+    <div className="h(~200) scroll-y mt(20) -webkit-scrollbar::w(8) -webkit-scrollbar-thumb::bg(#999999)+r(4) -webkit-scrollbar-track::bg(#E7E7E7)+r(4)">
       {props.result.map((r) => (
         <Link key={r.id} to={`/map?x=${r.x}&y=${r.y}`}>
           <div className="vbox ml(12) mb(20) w(358) pointer">

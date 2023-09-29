@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface Node {
+export interface Node {
   url: string; // "http://milideal-api.run.goorm.io/store/seogwipo-hotel-jeju";
   slug: string; // "seogwipo-hotel-jeju";
   address: string; // "제주도 서귀포시 상예로 319";
@@ -21,15 +21,13 @@ interface Node {
 }
 
 export interface Nodes {
-  lastUpdated: string;
-  count: number;
+  count: 0;
   next: null;
   previous: null;
   results: Node[];
 }
 
-const initialState: Nodes = {
-  lastUpdated: "2023.01.01",
+export const initialState: Nodes = {
   count: 0,
   next: null,
   previous: null,
@@ -49,7 +47,18 @@ const userListSlice = createSlice({
 
 export default userListSlice;
 
-export const nodesAPI = createAsyncThunk("NODES_API", async () => {
-  const response = await axios.get(`/store`);
-  return response.data;
-});
+export interface nodesAPIProps {
+  x: number;
+  y: number;
+  distance: number;
+}
+
+export const nodesAPI = createAsyncThunk(
+  "NODES_API",
+  async (props: nodesAPIProps) => {
+    const response = await axios.get(
+      `/geo?x=${props.x}&y=${props.y}&distance=${props.distance}`
+    );
+    return response.data;
+  }
+);

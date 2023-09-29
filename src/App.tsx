@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
-import MapView from "./pages/MapView";
+import Map from "./pages/Map";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/map" element={<MapView />} />
+      <Route path="/map" element={<Map />} />
     </Routes>
   );
 }

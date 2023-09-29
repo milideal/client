@@ -4,7 +4,6 @@ const mockServer = ({ environment = "development" }) => {
   return createServer({
     environment,
     routes() {
-      this.urlPrefix = "http://localhost:3000";
       this.timing = 1000;
       this.get("/geo", (_schema, _request) => {
         return new Response(

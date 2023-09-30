@@ -1,1 +1,1 @@
-export type { Node, Nodes, nodesAPIProps } from "./nodeSlice";
+export type { Node, Nodes, nodesAPIProps } from "./nodesAPI";

@@ -3,6 +3,7 @@ import locationImage from "../../assets/MapView/location.svg";
 import phoneIcon from "../../assets/MapView/phone.svg";
 import websiteIcon from "../../assets/MapView/website.svg";
 import descriptionIcon from "../../assets/MapView/description.svg";
+import closeIcon from "../../assets/MapView/close.svg";
 
 import "./MapViewModal.css";
 
@@ -29,7 +30,11 @@ function MapViewModal({ className }: { className?: string }) {
           <div className="icon">
             <img src={phoneIcon} />
           </div>
-          <div className="text">064-738-0123</div>
+          <div className="text">
+            <a href="tel:0647380123" className="link">
+              064-738-0123
+            </a>
+          </div>
         </div>
         <div className="desc hbox(top) gap(12)">
           <div className="icon descriptionIcon">
@@ -44,8 +49,21 @@ function MapViewModal({ className }: { className?: string }) {
           <div className="icon">
             <img src={websiteIcon} />
           </div>
-          <div className="text">www.welfare.mil.kr</div>
+          <div className="text">
+            <a
+              href="https://www.welfare.mil.kr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              www.welfare.mil.kr
+            </a>
+          </div>
         </div>
+      </div>
+
+      <div className="close-btn absolute right(14) top(16) cursor">
+        <img src={closeIcon} alt="Close Button" />
       </div>
     </div>
   );

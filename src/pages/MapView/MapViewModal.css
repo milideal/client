@@ -15,3 +15,11 @@
 .MapViewModal .descriptionIcon {
   margin-top: 2px;
 }
+
+.MapViewModal .cursor {
+  cursor: pointer;
+}
+.MapViewModal .link {
+  color: #5b89ff;
+  font-weight: bold;
+}

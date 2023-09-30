@@ -6,15 +6,19 @@ import descriptionIcon from "../../assets/MapView/description.svg";
 
 import "./MapViewModal.css";
 
-function MapViewModal() {
+function MapViewModal({ className }: { className?: string }) {
   return (
-    <div className="MapViewModal w(341) m(29) r(18) vbox gap(16)">
+    <div
+      className={`MapViewModal w(341) p(29) r(18) vbox gap(16) box-shadow(0/20/40/#000.25) NanumGothic ${
+        className || ""
+      }`}
+    >
       <div className="heading text(center) bold">
         <div className="c(#999) font-size(14)">숙박시설</div>
         <div className="font-size(24)">서귀포호텔</div>
       </div>
 
-      <div className="info vbox gap(5)">
+      <div className="info vbox gap(5) font-size(14)">
         <div className="hbox gap(12)">
           <div className="icon">
             <img src={locationImage} />

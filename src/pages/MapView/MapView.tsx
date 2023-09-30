@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import ReactDomServer from "react-dom/server";
 import MapViewModal from "./MapViewModal";
 
 const MapView = () => {
@@ -48,23 +47,13 @@ const MapView = () => {
         "click",
         function (mouseEvent: kakao.maps.event.MouseEvent) {}
       );
-
-      const iwContent = <MapViewModal />;
-      const iwPosition = new kakao.maps.LatLng(33.450701, 126.570667), //인포윈도우 표시 위치입니다
-        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-      // 인포윈도우를 생성하고 지도에 표시합니다
-      const infowindow = new kakao.maps.InfoWindow({
-        map: map, // 인포윈도우가 표시될 지도
-        position: positions[0].latlng,
-        content: ReactDomServer.renderToStaticMarkup(iwContent),
-        removable: iwRemoveable,
-      });
     }
   }, []);
 
   return (
     <div>
       <div className="w(100vw) h(100vh)" id="map"></div>
+      <MapViewModal />
     </div>
   );
 };

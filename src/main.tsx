@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/configStore.ts";
 import "./index.css";
+import mockServer from "./test/mockServer.ts";
+
+mockServer({ environment: "development" });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

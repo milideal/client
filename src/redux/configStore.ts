@@ -1,22 +1,25 @@
 import logger from "redux-logger";
 import { reduxBatch } from "@manaflair/redux-batch";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import nodeSlice from "./features/nodeSlice";
+import nodesAPI from "./features/nodesAPI";
+import searchSlice from "./features/searchSlice";
 
 const rootReducer = combineReducers({
-  node: nodeSlice.reducer,
+  [nodesAPI.reducerPath]: nodesAPI.reducer,
+  search: searchSlice.reducer,
 });
 
 const store = import.meta.env.DEV
   ? configureStore({
       reducer: rootReducer,
       middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(logger),
+        getDefaultMiddleware().concat(logger).concat(nodesAPI.middleware),
       enhancers: [reduxBatch],
     })
   : configureStore({
       reducer: rootReducer,
-      middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(nodesAPI.middleware),
       enhancers: [reduxBatch],
     });
 

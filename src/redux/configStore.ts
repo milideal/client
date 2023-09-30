@@ -13,12 +13,13 @@ const store = import.meta.env.DEV
   ? configureStore({
       reducer: rootReducer,
       middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(logger),
+        getDefaultMiddleware().concat(logger).concat(nodesAPI.middleware),
       enhancers: [reduxBatch],
     })
   : configureStore({
       reducer: rootReducer,
-      middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+      middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(nodesAPI.middleware),
       enhancers: [reduxBatch],
     });
 

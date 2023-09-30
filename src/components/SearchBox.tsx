@@ -11,7 +11,6 @@ const SearchBox = (props: { placeholder: string }) => {
 
   const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    console.log(queryRef.current!.value);
     dispatch(setQuery({ value: queryRef.current!.value }));
     setInputValue(e.target.value);
 

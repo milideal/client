@@ -25,15 +25,15 @@
 
 주로 사용하는 아이콘은 다음과 같습니다.
 
-- :zap: - 성능 개선
-- :fire: - 코드 삭제
-- :bug: - 버그 수정
-- :sparkles: - 새 기능 추가
-- :memo: - 문서 추가 또는 수정
-- :lipstick: - UI 관련 수정
-- :bento: - assets 추가 또는 수정
-- :iphone: - 반응형 디자인 작업
-- :pencil2: - 오타 수정
+- :zap: - 성능 개선 `:zap:`
+- :fire: - 코드 삭제 `:fire:`
+- :bug: - 버그 수정 `:bug:`
+- :sparkles: - 새 기능 추가 `:sparkles:`
+- :memo: - 문서 추가 또는 수정 `:memo:`
+- :lipstick: - UI 관련 수정 `:lipstick:`
+- :bento: - assets 추가 또는 수정 `:bento:`
+- :iphone: - 반응형 디자인 작업 `:iphone:`
+- :pencil2: - 오타 수정 `:pencil2:`
 
 ## Contributers
 

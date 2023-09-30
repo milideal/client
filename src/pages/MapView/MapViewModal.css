@@ -1,0 +1,7 @@
+.MapViewModal .text {
+  flex-shrink: 1;
+}
+
+.MapViewModal .descriptionIcon {
+  margin-top: 4px;
+}

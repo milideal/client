@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useAppSelect } from "../../redux/configStore.hooks";
 import { getMarkerImageSrc } from "./utils";
+import { useGetStoresQuery } from "../../redux/features/nodesAPI";
 
 interface KakaoMapProps {
   x: number;
@@ -8,7 +8,11 @@ interface KakaoMapProps {
 }
 
 const KakaoMap = ({ x, y }: KakaoMapProps) => {
-  const storeList = useAppSelect((state) => state.node.results);
+  const storeList = useGetStoresQuery({
+    x: x,
+    y: y,
+    distance: 100,
+  }).data?.results;
 
   useEffect(() => {
     const mapContainer = document.getElementById("map") as HTMLElement,
@@ -20,7 +24,7 @@ const KakaoMap = ({ x, y }: KakaoMapProps) => {
     const map = new kakao.maps.Map(mapContainer, mapOption);
 
     map.setDraggable(true);
-    const markers = storeList.map((store) => {
+    const markers = storeList?.map((store) => {
       return new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(store.coord.y, store.coord.x),
@@ -33,12 +37,12 @@ const KakaoMap = ({ x, y }: KakaoMapProps) => {
         ),
       });
     });
-
-    markers.forEach((marker) => {
-      kakao.maps.event.addListener(marker, "click", () => {
-        map.panTo(marker.getPosition());
+    if (markers)
+      markers.forEach((marker) => {
+        kakao.maps.event.addListener(marker, "click", () => {
+          map.panTo(marker.getPosition());
+        });
       });
-    });
 
     map.setMaxLevel(6);
   }, [storeList]);

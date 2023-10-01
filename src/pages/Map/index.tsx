@@ -1,7 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import KakaoMap from "./KakaoMap";
 import Overlay from "./Overlay";
-import DetailsModal from "./DetailsModal";
 
 const Map = () => {
   const [searchParams] = useSearchParams();
@@ -19,7 +18,6 @@ const Map = () => {
           y={y ? Number(y) : 33.450701}
         />
       </div>
-      <DetailsModal />
     </>
   );
 };

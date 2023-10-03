@@ -9,7 +9,7 @@ import store from "./redux/configStore.ts";
 import "./index.css";
 import mockServer from "./test/mockServer.ts";
 
-mockServer({ environment: "development" });
+mockServer({ environment: import.meta.env.MODE });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

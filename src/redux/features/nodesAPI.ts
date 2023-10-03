@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Nodes, nodesAPIProps } from "../types";
+import { StoreNodes, nodesAPIProps } from "../types";
 
 const nodesAPI = createApi({
   reducerPath: "node",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://milideal-api.run.goorm.io" }),
   endpoints: (builder) => ({
-    getStores: builder.query<Nodes, nodesAPIProps>({
+    getStores: builder.query<StoreNodes, nodesAPIProps>({
       query: (props) =>
         `/geo?x=${props.x}&y=${props.y}&distance=${props.distance}`,
     }),

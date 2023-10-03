@@ -1,9 +1,10 @@
 import { createServer, Response } from "miragejs";
 
-const mockServer = ({ environment = "development" }) => {
+const mockServer = (props: { environment: string }) => {
   return createServer({
-    environment,
+    environment: props.environment,
     routes() {
+      this.urlPrefix = "https://milideal-api.run.goorm.io";
       this.timing = 1000;
       this.get("/geo", (_schema, _request) => {
         return new Response(

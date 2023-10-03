@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { useMap, useMarkers } from "./utils";
+import { useMap, useMarkers } from "./hooks";
 import { useGetStoresQuery } from "../../redux/features/nodesAPI";
 
 interface KakaoMapProps {
@@ -14,9 +13,10 @@ const KakaoMap = ({ x, y }: KakaoMapProps) => {
     distance: 100,
   }).data?.results;
 
-  const mapContainer = useRef<HTMLDivElement>(null);
-
-  const map = useMap({ mapContainer: mapContainer, x: x, y: y });
+  const { mapContainer, map } = useMap({
+    x: x,
+    y: y,
+  });
   useMarkers({ storeList: storeList, map: map });
 
   return <div className="w(100%) h(100%)" ref={mapContainer}></div>;

@@ -20,6 +20,10 @@ const useMap = (props: MapProps) => {
     const newMap = new kakao.maps.Map(mapContainer.current, mapOption);
     newMap.setMaxLevel(6);
     setMap(newMap);
+
+    return () => {
+      mapContainer.current!.innerHTML = ""; // 컴포넌트 언마운트시 지도 삭제
+    };
   }, []);
 
   return { mapContainer, map };

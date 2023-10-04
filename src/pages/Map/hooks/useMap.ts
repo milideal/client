@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { useGetStoresQuery } from "../../../redux/features/nodesAPI";
+import { useMarkers } from ".";
+
 interface MapProps {
   x: number;
   y: number;
@@ -6,8 +9,37 @@ interface MapProps {
 
 const useMap = (props: MapProps) => {
   const { x, y } = props;
-  const mapContainer = useRef<HTMLDivElement>(null);
+  const [lat, setLat] = useState(y);
+  const [lng, setLng] = useState(x);
+  const [level, setLevel] = useState<undefined | number>(undefined);
   const [map, setMap] = useState<kakao.maps.Map>();
+  const mapContainer = useRef<HTMLDivElement>(null);
+
+  const storeList = useGetStoresQuery({
+    x: lng,
+    y: lat,
+    level: level,
+  }).data?.results;
+  useMarkers({ storeList, map });
+
+  const mapViewChangeHandler = (newMap: kakao.maps.Map) => () => {
+    const latlng = newMap.getCenter();
+    const url = new URL(location.href);
+    const _lat = latlng.getLat();
+    const _lng = latlng.getLng();
+    const _level = newMap.getLevel();
+
+    setLat(_lat);
+    setLng(_lng);
+    setLevel(_level);
+
+    console.log(_level, _lat, _lng);
+    url.searchParams.set("x", _lng.toString());
+    url.searchParams.set("y", _lat.toString());
+    _level && url.searchParams.set("level", _level.toString());
+    console.log(url.toString());
+    window.history.replaceState({}, "", url.toString());
+  };
 
   useEffect(() => {
     const mapOption = {
@@ -18,8 +50,34 @@ const useMap = (props: MapProps) => {
     if (!mapContainer || !mapContainer.current) return;
 
     const newMap = new kakao.maps.Map(mapContainer.current, mapOption);
+
+    // 지도 기본 설정
     newMap.setMaxLevel(6);
+    kakao.maps.event.addListener(
+      newMap,
+      "dragend",
+      mapViewChangeHandler(newMap)
+    );
+    kakao.maps.event.addListener(
+      newMap,
+      "zoom_changed",
+      mapViewChangeHandler(newMap)
+    );
     setMap(newMap);
+
+    return () => {
+      // 등록한 listener 삭제
+      kakao.maps.event.removeListener(
+        newMap,
+        "dragend",
+        mapViewChangeHandler(newMap)
+      );
+      kakao.maps.event.removeListener(
+        newMap,
+        "zoom_changed",
+        mapViewChangeHandler(newMap)
+      );
+    };
   }, []);
 
   return { mapContainer, map };

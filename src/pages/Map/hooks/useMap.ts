@@ -5,13 +5,14 @@ import { useMarkers } from ".";
 interface MapProps {
   x: number;
   y: number;
+  level: number;
 }
 
 const useMap = (props: MapProps) => {
-  const { x, y } = props;
+  const { x, y, level: p_level } = props;
   const [lat, setLat] = useState(y);
   const [lng, setLng] = useState(x);
-  const [level, setLevel] = useState<undefined | number>(undefined);
+  const [level, setLevel] = useState<undefined | number>(p_level);
   const [map, setMap] = useState<kakao.maps.Map>();
   const mapContainer = useRef<HTMLDivElement>(null);
 
@@ -44,7 +45,7 @@ const useMap = (props: MapProps) => {
   useEffect(() => {
     const mapOption = {
       center: new kakao.maps.LatLng(y, x),
-      level: 3,
+      level,
     };
 
     if (!mapContainer || !mapContainer.current) return;

@@ -6,6 +6,7 @@ const Map = () => {
   const [searchParams] = useSearchParams();
   const x = searchParams.get("x");
   const y = searchParams.get("y");
+  const level = searchParams.get("level");
 
   return (
     <>
@@ -16,6 +17,7 @@ const Map = () => {
         <KakaoMap
           x={x ? Number(x) : 126.570667}
           y={y ? Number(y) : 33.450701}
+          level={Number(level) || 6}
         />
       </div>
     </>

@@ -3,7 +3,6 @@ import { useAppSelect } from "../../redux/configStore.hooks";
 
 const ResultBox = () => {
   const result = useAppSelect((state) => state.search.searchResults);
-
   if (result.length === 0)
     return (
       <span className="font(14) NanumGothic 900 c(#999999) ml(12) mt(20)">

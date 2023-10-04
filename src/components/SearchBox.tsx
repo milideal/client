@@ -5,9 +5,10 @@ import searchImg from "/src/assets/search-20x20.png";
 
 const SearchBox = (props: { placeholder: string }) => {
   const dispatch = useAppDispatch();
-  const places = new kakao.maps.services.Places();
 
   const [inputValue, setInputValue] = useState("");
+
+  const places = new kakao.maps.services.Places();
 
   const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -19,9 +20,10 @@ const SearchBox = (props: { placeholder: string }) => {
       return;
     }
 
-    places.keywordSearch(queryRef.current!.value, (result, status) => {
-      dispatch(setSearchResult({ result, status }));
-    });
+    if (places)
+      places.keywordSearch(queryRef.current!.value, (result, status) => {
+        dispatch(setSearchResult({ result, status }));
+      });
   };
   const queryRef = useRef<HTMLInputElement>(null);
 

@@ -1,4 +1,4 @@
-export interface Node {
+export interface StoreNode {
   url: string; // "http://milideal-api.run.goorm.io/store/seogwipo-hotel-jeju";
   slug: string; // "seogwipo-hotel-jeju";
   address: string; // "제주도 서귀포시 상예로 319";
@@ -17,11 +17,11 @@ export interface Node {
   endDate: null;
 }
 
-export interface Nodes {
+export interface StoreNodes {
   count: 0;
   next: null;
   previous: null;
-  results: Node[];
+  results: StoreNode[];
 }
 export interface nodesAPIProps {
   x: number;

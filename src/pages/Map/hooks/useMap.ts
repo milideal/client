@@ -64,6 +64,7 @@ const useMap = (props: MapProps) => {
         "idle",
         mapViewChangeHandler(newMap)
       );
+      mapContainer.current!.innerHTML = ""; // 컴포넌트 언마운트시 지도 삭제
     };
   }, []);
 

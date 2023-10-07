@@ -1,4 +1,3 @@
-import React from "react";
 import locationImage from "../../assets/MapView/location.svg";
 import phoneIcon from "../../assets/MapView/phone.svg";
 import websiteIcon from "../../assets/MapView/website.svg";
@@ -6,8 +5,15 @@ import descriptionIcon from "../../assets/MapView/description.svg";
 import closeIcon from "../../assets/MapView/close.svg";
 
 import "./DetailsModal.css";
+import { useAppDispatch, useAppSelect } from "../../redux/configStore.hooks";
+import { setSelectedNode } from "../../redux/features/nodeData";
 
 function DetailsModal({ className }: { className?: string }) {
+  const dispatch = useAppDispatch();
+  const { selected } = useAppSelect((state) => state.nodeData);
+
+  if (!selected) return <></>;
+
   return (
     <div
       className={`DetailsModal w(341) p(29) r(18) vbox gap(16) box-shadow(0/20/40/#000.25) NanumGothic ${
@@ -15,8 +21,8 @@ function DetailsModal({ className }: { className?: string }) {
       }`}
     >
       <div className="heading text(center) bold">
-        <div className="c(#999) font-size(14)">숙박시설</div>
-        <div className="font-size(24)">서귀포호텔</div>
+        <div className="c(#999) font-size(14)">{selected.storeType}</div>
+        <div className="font-size(24)">{selected.name}</div>
       </div>
 
       <div className="info vbox gap(5) font-size(14)">
@@ -24,45 +30,56 @@ function DetailsModal({ className }: { className?: string }) {
           <div className="icon">
             <img src={locationImage} />
           </div>
-          <div className="text">제주도 서귀포시 상예로 319</div>
+          <div className="text">{selected.address}</div>
         </div>
         <div className="phone hbox gap(12)">
           <div className="icon">
             <img src={phoneIcon} />
           </div>
           <div className="text">
-            <a href="tel:0647380123" className="link">
-              064-738-0123
-            </a>
+            {selected.tel && (
+              <a href={`tel:${selected.tel}`} className="link">
+                {selected.tel}
+              </a>
+            )}
           </div>
         </div>
-        <div className="desc hbox(top) gap(12)">
-          <div className="icon descriptionIcon">
-            <img src={descriptionIcon} />
+        {selected.promotion && (
+          <div className="desc hbox(top) gap(12)">
+            <div className="icon descriptionIcon">
+              <img src={descriptionIcon} />
+            </div>
+            <div className="text">{selected.promotion}</div>
           </div>
-          <div className="text">
-            해당 시설은 국군복지단에서 운영하는 군 휴양시설로, 자세한 내용은
-            국군복지단 홈페이지를 통해 확인하시기 바랍니다.
-          </div>
-        </div>
+        )}
         <div className="site desc hbox gap(12)">
           <div className="icon">
             <img src={websiteIcon} />
           </div>
           <div className="text">
             <a
-              href="https://www.welfare.mil.kr"
+              href={`https://${selected.url}`}
               target="_blank"
               rel="noopener noreferrer"
               className="link"
             >
-              www.welfare.mil.kr
+              {selected.url}
             </a>
           </div>
         </div>
       </div>
 
-      <div className="close-btn absolute right(14) top(16) cursor">
+      <div
+        className="close-btn absolute right(14) top(16) cursor"
+        onClick={() => {
+          dispatch(setSelectedNode({ value: null }));
+          window.history.replaceState(
+            {},
+            "",
+            `${location.origin}/map?x=${selected.coord.x}&y=${selected.coord.y}`
+          );
+        }}
+      >
         <img src={closeIcon} alt="Close Button" />
       </div>
     </div>

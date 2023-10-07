@@ -58,12 +58,12 @@ function DetailsModal({ className }: { className?: string }) {
           </div>
           <div className="text">
             <a
-              href={`https://${selected.url}`}
+              href={`https://${selected.homepage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="link"
             >
-              {selected.url}
+              {selected.homepage}
             </a>
           </div>
         </div>

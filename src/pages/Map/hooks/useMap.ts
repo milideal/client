@@ -34,11 +34,9 @@ const useMap = (props: MapProps) => {
     setLng(_lng);
     setLevel(_level);
 
-    console.log(_level, _lat, _lng);
     url.searchParams.set("x", _lng.toString());
     url.searchParams.set("y", _lat.toString());
     _level && url.searchParams.set("level", _level.toString());
-    console.log(url.toString());
     window.history.replaceState({}, "", url.toString());
   };
 

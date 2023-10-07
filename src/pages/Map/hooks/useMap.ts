@@ -54,28 +54,14 @@ const useMap = (props: MapProps) => {
 
     // 지도 기본 설정
     newMap.setMaxLevel(6);
-    kakao.maps.event.addListener(
-      newMap,
-      "dragend",
-      mapViewChangeHandler(newMap)
-    );
-    kakao.maps.event.addListener(
-      newMap,
-      "zoom_changed",
-      mapViewChangeHandler(newMap)
-    );
+    kakao.maps.event.addListener(newMap, "idle", mapViewChangeHandler(newMap));
     setMap(newMap);
 
     return () => {
       // 등록한 listener 삭제
       kakao.maps.event.removeListener(
         newMap,
-        "dragend",
-        mapViewChangeHandler(newMap)
-      );
-      kakao.maps.event.removeListener(
-        newMap,
-        "zoom_changed",
+        "idle",
         mapViewChangeHandler(newMap)
       );
     };

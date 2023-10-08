@@ -12,7 +12,7 @@ const useMap = (props: MapProps) => {
   const { x, y, level: p_level } = props;
   const [lat, setLat] = useState(y);
   const [lng, setLng] = useState(x);
-  const [level, setLevel] = useState<undefined | number>(p_level);
+  const [level, setLevel] = useState<number>(p_level);
   const [map, setMap] = useState<kakao.maps.Map>();
   const mapContainer = useRef<HTMLDivElement>(null);
 

@@ -12,7 +12,7 @@ function DetailsModal({ className }: { className?: string }) {
   const dispatch = useAppDispatch();
   const { selected } = useAppSelect((state) => state.nodeData);
 
-  if (!selected) return <></>;
+  if (!selected) return <div></div>;
 
   return (
     <div

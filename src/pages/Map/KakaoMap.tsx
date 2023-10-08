@@ -1,23 +1,17 @@
-import { useMap, useMarkers } from "./hooks";
-import { useGetStoresQuery } from "../../redux/features/nodesAPI";
+import { useMap } from "./hooks";
 
 interface KakaoMapProps {
   x: number;
   y: number;
+  level: number;
 }
 
-const KakaoMap = ({ x, y }: KakaoMapProps) => {
-  const storeList = useGetStoresQuery({
+const KakaoMap = ({ x, y, level }: KakaoMapProps) => {
+  const { mapContainer } = useMap({
     x: x,
     y: y,
-    distance: 100,
-  }).data?.results;
-
-  const { mapContainer, map } = useMap({
-    x: x,
-    y: y,
+    level: level,
   });
-  useMarkers({ storeList: storeList, map: map });
 
   return <div className="w(100%) h(100%)" ref={mapContainer}></div>;
 };

@@ -7,6 +7,7 @@ const Map = () => {
   const [searchParams] = useSearchParams();
   const x = searchParams.get("x");
   const y = searchParams.get("y");
+  const level = searchParams.get("level");
 
   return (
     <>
@@ -17,9 +18,13 @@ const Map = () => {
         <KakaoMap
           x={x ? Number(x) : 126.570667}
           y={y ? Number(y) : 33.450701}
+          level={Number(level) || 6}
         />
       </div>
       <DetailsModal />
+      <div className="nomap fixed x(center)">
+        정상적으로 지도가 안보일경우 브라우저를 업데이트 해주세요.
+      </div>
     </>
   );
 };

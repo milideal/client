@@ -18,6 +18,9 @@ const Map = () => {
           y={y ? Number(y) : 33.450701}
         />
       </div>
+      <div className="nomap fixed x(center)">
+        정상적으로 지도가 안보일경우 브라우저를 업데이트 해주세요.
+      </div>
     </>
   );
 };

@@ -52,7 +52,16 @@ const useMap = (props: MapProps) => {
 
     // 지도 기본 설정
     newMap.setMaxLevel(6);
-    kakao.maps.event.addListener(newMap, "idle", mapViewChangeHandler(newMap));
+    kakao.maps.event.addListener(
+      newMap,
+      "dragend",
+      mapViewChangeHandler(newMap)
+    );
+    kakao.maps.event.addListener(
+      newMap,
+      "zoom_changed",
+      mapViewChangeHandler(newMap)
+    );
     setMap(newMap);
 
     kakao.maps.event.addListener(newMap, "mousemove", () => {
@@ -63,7 +72,12 @@ const useMap = (props: MapProps) => {
       // 등록한 listener 삭제
       kakao.maps.event.removeListener(
         newMap,
-        "idle",
+        "dragend",
+        mapViewChangeHandler(newMap)
+      );
+      kakao.maps.event.removeListener(
+        newMap,
+        "zoom_changed",
         mapViewChangeHandler(newMap)
       );
       mapContainer.current!.innerHTML = ""; // 컴포넌트 언마운트시 지도 삭제

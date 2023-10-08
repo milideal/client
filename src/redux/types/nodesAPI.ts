@@ -26,5 +26,5 @@ export interface StoreNodes {
 export interface nodesAPIProps {
   x: number;
   y: number;
-  distance: number;
+  level?: number;
 }

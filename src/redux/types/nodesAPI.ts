@@ -28,3 +28,7 @@ export interface nodesAPIProps {
   y: number;
   level?: number;
 }
+
+export interface storeSearchAPIProps {
+  searchQuery: string;
+}

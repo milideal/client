@@ -1,12 +1,20 @@
 import { useSearchParams } from "react-router-dom";
 import KakaoMap from "./KakaoMap";
 import Overlay from "./Overlay";
+import { useAppDispatch } from "../../redux/configStore.hooks";
+import { useEffect } from "react";
+import { cleanupSearchResult } from "../../redux/features/searchSlice";
 
 const Map = () => {
   const [searchParams] = useSearchParams();
   const x = searchParams.get("x");
   const y = searchParams.get("y");
   const level = searchParams.get("level");
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(cleanupSearchResult());
+  }, []);
 
   return (
     <>

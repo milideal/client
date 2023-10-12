@@ -20,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/map/:store_slug" element={<Map />} />
       </Routes>
     )
   );

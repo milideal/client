@@ -11,6 +11,7 @@ interface MarkerProps {
 }
 
 const useMarkers = (props: MarkerProps) => {
+  const dispatch = useAppDispatch();
   const { map, storeList } = props;
   const [markers, setMarkers] = useState<
     {
@@ -18,7 +19,6 @@ const useMarkers = (props: MarkerProps) => {
       storeNode: StoreNode;
     }[]
   >([]);
-  const dispatch = useAppDispatch();
 
   const addMarkerCB = useCallback(
     (store: StoreNode) =>

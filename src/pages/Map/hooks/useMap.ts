@@ -34,6 +34,8 @@ const useMap = (props: MapProps) => {
     setLng(_lng);
     setLevel(_level);
 
+    if (url.pathname.includes("/map/")) return;
+
     url.searchParams.set("x", _lng.toString());
     url.searchParams.set("y", _lat.toString());
     _level && url.searchParams.set("level", _level.toString());

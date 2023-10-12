@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import KakaoMap from "./KakaoMap";
 import Overlay from "./Overlay";
 import DetailsModal from "./DetailsModal";
@@ -8,6 +8,11 @@ const Map = () => {
   const x = searchParams.get("x");
   const y = searchParams.get("y");
   const level = searchParams.get("level");
+
+  const { store_slug } = useParams();
+  console.log("MAPAA", store_slug);
+
+  if (!!store_slug) return <div>Loading...</div>;
 
   return (
     <>

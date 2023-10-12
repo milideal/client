@@ -54,7 +54,7 @@ const useMarkers = (props: MarkerProps) => {
     const newMarkers = markersToAdd.map((store) => {
       const marker = addMarkerCB(store);
       kakao.maps.event.addListener(marker, "click", () => {
-        map.panTo(marker.getPosition());
+        // map.panTo(marker.getPosition());
         dispatch(setSelectedNode({ value: store }));
         window.history.replaceState(
           {},

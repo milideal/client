@@ -75,12 +75,12 @@ function DetailsModal({ className }: { className?: string }) {
       <div
         className="close-btn absolute right(14) top(16) cursor"
         onClick={() => {
-          dispatch(setSelectedNode({ value: null }));
           window.history.replaceState(
             {},
             "",
             `${location.origin}/map?x=${selected.coord.x}&y=${selected.coord.y}`
           );
+          dispatch(setSelectedNode({ value: null }));
         }}
       >
         <img src={closeIcon} alt="Close Button" />

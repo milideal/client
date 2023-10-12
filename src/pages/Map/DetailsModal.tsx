@@ -14,6 +14,7 @@ function DetailsModal({ className }: { className?: string }) {
 
   if (!selected) return <div></div>;
 
+  const homepageUrl = selected.homepage ? new URL(selected.homepage) : null;
   return (
     <div
       className={`DetailsModal w(341) p(29) r(18) vbox gap(16) box-shadow(0/20/40/#000.25) NanumGothic ${
@@ -52,21 +53,23 @@ function DetailsModal({ className }: { className?: string }) {
             <div className="text">{selected.promotion}</div>
           </div>
         )}
-        <div className="site desc hbox gap(12)">
-          <div className="icon">
-            <img src={websiteIcon} />
+        {homepageUrl && (
+          <div className="site desc hbox gap(12)">
+            <div className="icon">
+              <img src={websiteIcon} />
+            </div>
+            <div className="text">
+              <a
+                href={`${selected.homepage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                {homepageUrl?.hostname}
+              </a>
+            </div>
           </div>
-          <div className="text">
-            <a
-              href={`https://${selected.homepage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link"
-            >
-              {selected.homepage}
-            </a>
-          </div>
-        </div>
+        )}
       </div>
 
       <div

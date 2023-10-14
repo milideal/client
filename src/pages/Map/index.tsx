@@ -15,7 +15,6 @@ const Map = () => {
   const x = searchParams.get("x");
   const y = searchParams.get("y");
   const level = searchParams.get("level");
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(cleanupSearchResult());

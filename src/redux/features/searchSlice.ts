@@ -43,9 +43,14 @@ const searchSlice = createSlice({
         })
         .exhaustive();
     },
+    cleanupSearchResult(state) {
+      state.searchResults = [];
+      state.isSearchCompleted = false;
+    },
   },
 });
 
 export default searchSlice;
 
-export const { setSearchResult, setQuery } = searchSlice.actions;
+export const { setSearchResult, setQuery, cleanupSearchResult } =
+  searchSlice.actions;

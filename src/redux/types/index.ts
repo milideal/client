@@ -1,1 +1,6 @@
-export type { StoreNode, StoreNodes, nodesAPIProps } from "./nodesAPI";
+export type {
+  StoreNode,
+  StoreNodes,
+  nodesAPIProps,
+  storeSearchAPIProps,
+} from "./nodesAPI";

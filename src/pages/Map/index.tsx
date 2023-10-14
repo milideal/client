@@ -5,6 +5,7 @@ import DetailsModal from "./DetailsModal";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelect } from "../../redux/configStore.hooks";
 import { setSelectedNode } from "../../redux/features/nodeData";
+import { cleanupSearchResult } from "../../redux/features/searchSlice";
 
 const Map = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,11 @@ const Map = () => {
   const x = searchParams.get("x");
   const y = searchParams.get("y");
   const level = searchParams.get("level");
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(cleanupSearchResult());
+  }, []);
 
   const { store_slug } = useParams();
 

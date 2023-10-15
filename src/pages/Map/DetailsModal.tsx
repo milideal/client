@@ -8,7 +8,7 @@ import "./DetailsModal.css";
 import { useAppDispatch, useAppSelect } from "../../redux/configStore.hooks";
 import { setSelectedNode } from "../../redux/features/nodeData";
 
-function DetailsModal({ className }: { className?: string }) {
+const DetailsModal = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch();
   const { selected } = useAppSelect((state) => state.nodeData);
 

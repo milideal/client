@@ -3,12 +3,14 @@ import { reduxBatch } from "@manaflair/redux-batch";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import nodesAPI from "./features/nodesAPI";
 import searchSlice from "./features/searchSlice";
+import nodeData from "./features/nodeData";
 import storeSearchAPI from "./features/storeSearchAPI";
 
 const rootReducer = combineReducers({
   [nodesAPI.reducerPath]: nodesAPI.reducer,
   [storeSearchAPI.reducerPath]: storeSearchAPI.reducer,
   search: searchSlice.reducer,
+  nodeData: nodeData.reducer,
 });
 
 const store = import.meta.env.DEV

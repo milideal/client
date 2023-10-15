@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { getMarkerImageSrc } from "../utils";
 
 import { StoreNode } from "../../../redux/types";
+import { setSelectedNode } from "../../../redux/features/nodeData";
+import { useAppDispatch } from "../../../redux/configStore.hooks";
 
 interface MarkerProps {
   map: kakao.maps.Map | undefined;
@@ -9,6 +11,7 @@ interface MarkerProps {
 }
 
 const useMarkers = (props: MarkerProps) => {
+  const dispatch = useAppDispatch();
   const { map, storeList } = props;
   const [markers, setMarkers] = useState<
     {
@@ -51,7 +54,13 @@ const useMarkers = (props: MarkerProps) => {
     const newMarkers = markersToAdd.map((store) => {
       const marker = addMarkerCB(store);
       kakao.maps.event.addListener(marker, "click", () => {
-        map.panTo(marker.getPosition());
+        // map.panTo(marker.getPosition());
+        dispatch(setSelectedNode({ value: store }));
+        window.history.replaceState(
+          {},
+          "",
+          `${location.origin}/map/${store.slug.toLowerCase()}`
+        );
       });
       return { marker, storeNode: store };
     });

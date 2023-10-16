@@ -3,7 +3,7 @@ import { getMarkerImageSrc } from "../utils";
 
 import { StoreNode } from "../../../redux/types";
 import { setSelectedNode } from "../../../redux/features/nodeData";
-import { useAppDispatch } from "../../../redux/configStore.hooks";
+import { useAppDispatch, useAppSelect } from "../../../redux/configStore.hooks";
 
 interface MarkerProps {
   map: kakao.maps.Map | undefined;
@@ -19,6 +19,8 @@ const useMarkers = (props: MarkerProps) => {
       storeNode: StoreNode;
     }[]
   >([]);
+
+  const selectedFilter = useAppSelect((state) => state.filter);
 
   const addMarkerCB = useCallback(
     (store: StoreNode) =>
@@ -76,7 +78,7 @@ const useMarkers = (props: MarkerProps) => {
             .includes(item.storeNode.slug)
       ),
     ]);
-  }, [map, storeList]);
+  }, [map, storeList, selectedFilter]);
 
   return markers;
 };

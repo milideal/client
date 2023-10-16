@@ -1,3 +1,5 @@
+import { filterType } from "./";
+
 export interface StoreNode {
   url: string; // "http://milideal-api.run.goorm.io/store/seogwipo-hotel-jeju";
   slug: string; // "seogwipo-hotel-jeju";
@@ -18,7 +20,7 @@ export interface StoreNode {
 }
 
 export interface StoreNodes {
-  count: 0;
+  count: number;
   next: null;
   previous: null;
   results: StoreNode[];
@@ -27,6 +29,7 @@ export interface nodesAPIProps {
   x: number;
   y: number;
   level?: number;
+  filter?: filterType;
 }
 
 export interface storeSearchAPIProps {

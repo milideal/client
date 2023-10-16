@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useGetStoresQuery } from "../../../redux/features/nodesAPI";
+import { useLazyGetStoresQuery } from "../../../redux/features/nodesAPI";
 import { useMarkers } from ".";
 import { useAppSelect } from "../../../redux/configStore.hooks";
+import { StoreNodes } from "../../../redux/types";
 
 interface MapProps {
   x: number;
@@ -16,13 +17,26 @@ const useMap = (props: MapProps) => {
   const [level, setLevel] = useState<number>(p_level);
   const [map, setMap] = useState<kakao.maps.Map>();
   const mapContainer = useRef<HTMLDivElement>(null);
+  const filterSelected = useAppSelect((state) => state.filter);
 
-  const storeList = useGetStoresQuery({
-    x: lng,
-    y: lat,
-    level: level,
-  }).data?.results;
-  useMarkers({ storeList, map });
+  const [trigger, storeList] = useLazyGetStoresQuery();
+
+  useEffect(() => {
+    trigger({
+      x: lng,
+      y: lat,
+      level: level,
+      filter: filterSelected,
+    });
+  }, [filterSelected]);
+
+  useMarkers({
+    storeList: (storeList.data
+      ? (storeList.data as StoreNodes)
+      : { results: [] }
+    ).results,
+    map,
+  });
 
   const mapViewChangeHandler = (newMap: kakao.maps.Map) => () => {
     const latlng = newMap.getCenter();

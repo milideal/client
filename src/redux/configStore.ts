@@ -5,10 +5,12 @@ import nodesAPI from "./features/nodesAPI";
 import searchSlice from "./features/searchSlice";
 import nodeData from "./features/nodeData";
 import storeSearchAPI from "./features/storeSearchAPI";
+import filterSlice from "./features/filterSlice";
 
 const rootReducer = combineReducers({
   [nodesAPI.reducerPath]: nodesAPI.reducer,
   [storeSearchAPI.reducerPath]: storeSearchAPI.reducer,
+  filter: filterSlice.reducer,
   search: searchSlice.reducer,
   nodeData: nodeData.reducer,
 });

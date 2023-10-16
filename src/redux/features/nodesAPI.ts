@@ -17,7 +17,6 @@ const nodesAPI = createApi({
     getStores: builder.query<StoreNodes, nodesAPIProps>({
       queryFn: async (props, _api, _extraOptions, baseQuery) => {
         const selectedFilter = props.filter as filterType;
-        console.log(selectedFilter);
         const results = await Promise.all(
           Object.keys(selectedFilter)
             .filter((k) => selectedFilter[k])

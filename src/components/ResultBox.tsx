@@ -21,9 +21,6 @@ const ResultBox = ({ Wrapper }: WrapperRenderer) => {
 
   const [result, setResult] = useState<Array<any>>([]);
 
-  console.log(kakaoResult);
-  console.log(storeSearchAPIResult);
-
   useEffect(() => {
     const newMap = new Map();
     kakaoResult.forEach((r) => {

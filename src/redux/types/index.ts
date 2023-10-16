@@ -4,3 +4,5 @@ export type {
   nodesAPIProps,
   storeSearchAPIProps,
 } from "./nodesAPI";
+
+export type { filterType } from "./filterSlice";

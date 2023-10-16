@@ -21,9 +21,6 @@ const ResultBox = ({ Wrapper }: WrapperRenderer) => {
 
   const [result, setResult] = useState<Array<any>>([]);
 
-  console.log(kakaoResult);
-  console.log(storeSearchAPIResult);
-
   useEffect(() => {
     const newMap = new Map();
     kakaoResult.forEach((r) => {
@@ -53,11 +50,11 @@ const ResultBox = ({ Wrapper }: WrapperRenderer) => {
               <span className="font(14) NanumGothic 900 c(#999999)">
                 {r.address_name ? r.address_name : r.address}
               </span>
-              {r.name && (
+              {/* {r.name && (
                 <span className="font(14) NanumGothic 900 c(#f00)">
                   군인 할인 중
                 </span>
-              )}
+              )} */}
             </div>
           </Wrapper>
           <table></table>

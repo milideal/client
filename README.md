@@ -2,6 +2,11 @@
 
 [군 장병 AI · SW 역량강화 by KE] 하반기 프로젝트입니다.
 
+> 해당 프로젝트는 PWA(Progressive Web App)으로 제작하였습니다. 
+>
+> - (ios) Safari로 접속하면 북마크로 저장이 가능합니다.
+> - (android/desktop) Chrome 등의 브라우저를 통해 설치할 수 있습니다. 
+
 ## Environments
 
 개발할 때 사용한 환경입니다.

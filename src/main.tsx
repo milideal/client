@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/configStore.ts";
 import "./index.css";
-import mockServer from "./test/mockServer.ts";
+// import mockServer from "./test/mockServer.ts";
 
 // if (import.meta.env.MODE !== "production") {
 //   console.log("Running in development mode");
